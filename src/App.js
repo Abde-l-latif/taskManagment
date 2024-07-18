@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+/*css file */
+import "./App.css";
+/* Material Ui*/
+import Container from "@mui/material/Container";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import { deepOrange } from "@mui/material/colors";
+/* My Components*/
+import TodoContainer from "./components/todoContainer";
+import { TodoReducerProvider } from "./context/TaskList";
+import BarComponent from "./context/SnackBarContext";
+
+/* fontFamilly*/
+const theme = createTheme({
+  typography: {
+    fontFamily: ["fontOne"],
+  },
+  palette: {
+    primary: {
+      main: deepOrange[600],
+    },
+    secondary: {
+      main: deepOrange[400],
+    },
+  },
+});
+/* ==========fontFamilly========*/
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <TodoReducerProvider>
+        <BarComponent>
+          <Container
+            style={{
+              display: "flex",
+              alignItems: "center",
+              height: "100vh",
+              justifyContent: "center",
+              fontFamily: "fontOne",
+            }}
+          >
+            <TodoContainer />
+          </Container>
+        </BarComponent>
+      </TodoReducerProvider>
+    </ThemeProvider>
   );
 }
 

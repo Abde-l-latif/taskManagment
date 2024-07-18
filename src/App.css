@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: fontOne;
+  src: url("/public/fonts/Quicksand-Medium.ttf");
+}
